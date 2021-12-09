@@ -1,0 +1,1 @@
+-- Scrivere una query che ritorni i prodotti che non sono mai stati acquistati
