@@ -1,0 +1,7 @@
+{
+  "name": "full-stack-interview",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
