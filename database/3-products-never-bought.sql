@@ -1,1 +1,7 @@
--- Scrivere una query che ritorni i prodotti che non sono mai stati acquistati
+SELECT
+    Products.*
+FROM
+    Products
+    LEFT JOIN Orders_Products ON Products.id = Orders_Products.product_id
+WHERE
+    Orders_Products.order_id IS NULL;
