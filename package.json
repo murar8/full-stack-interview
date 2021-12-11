@@ -6,7 +6,9 @@
     "frontend"
   ],
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"npm run serve --workspace=backend\"  \"npm run start --workspace=frontend\""
+    "start": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",
+    "backend": "npm run serve --workspace=backend",
+    "frontend": "npm run start --workspace=frontend"
   },
   "devDependencies": {
     "concurrently": "^6.4.0"
