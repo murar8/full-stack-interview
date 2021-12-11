@@ -6,12 +6,6 @@ import { getAllOrders, getProduct, getProducts } from "./queries";
 const app = express();
 const port = Number(process.env.PORT) || 3000;
 
-app.get("/", (_req, res) => {
-  res.status(200).json({
-    message: "Hello World!",
-  });
-});
-
 app.get("/product/:id", async (req, res, next) => {
   const id = parseInt(req.params.id);
 
