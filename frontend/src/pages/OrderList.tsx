@@ -79,7 +79,7 @@ function OrderRow({ order }: OrderRowProps) {
         <TableCell>{createdAt}</TableCell>
         <TableCell>{order.products.length}</TableCell>
         <TableCell>{order.price}</TableCell>
-        <TableCell>{order.notes}</TableCell>
+        <TableCell>{order.notes || "-"}</TableCell>
       </TableRow>
       <TableRow sx={{ borderTop: 0 }}>
         <TableCell sx={{ py: 0 }} colSpan={6}>
