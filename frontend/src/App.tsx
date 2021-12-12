@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import { Container, createTheme, CssBaseline, Stack } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
@@ -12,21 +13,25 @@ const darkTheme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
+
 export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline enableColorScheme />
       <BrowserRouter>
-        <Stack sx={{ height: "100vh" }}>
-          <Header />
-          <Container maxWidth="md" disableGutters sx={{ flexGrow: 1 }}>
-            <Routes>
-              <Route path="/orders" element={<OrderList />} />
-              <Route path="/products" element={<ProductList />} />
-            </Routes>
-          </Container>
-          <Footer />
-        </Stack>
+        <QueryClientProvider client={queryClient}>
+          <Stack sx={{ height: "100vh" }}>
+            <Header />
+            <Container maxWidth="md" disableGutters sx={{ flexGrow: 1 }}>
+              <Routes>
+                <Route path="/orders" element={<OrderList />} />
+                <Route path="/products" element={<ProductList />} />
+              </Routes>
+            </Container>
+            <Footer />
+          </Stack>
+        </QueryClientProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

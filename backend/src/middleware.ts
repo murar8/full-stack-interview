@@ -30,5 +30,6 @@ export function genericErrorHandler(
   res: Response,
   next: NextFunction
 ) {
+  console.error("An error occured: ", err);
   res.status(500).json({ error: "Internal server error." });
 }

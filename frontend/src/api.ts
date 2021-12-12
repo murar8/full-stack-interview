@@ -3,13 +3,14 @@ export type Product = {
   code: string;
   description: string;
   price: number;
-  image_uri?: string;
+  imageURI: string | null;
 };
 
 export type Order = {
   id: number;
-  created_at: Date;
-  notes?: string;
+  createdAt: number;
+  price: number;
+  notes: string | null;
   products: { id: number; quantity: number }[];
 };
 
@@ -28,6 +29,5 @@ export async function getProducts(offset: number, count: number) {
 export async function getAllOrders() {
   const result = await fetch("/api/allorders");
   const orders = await result.json();
-  // TODO! timestamp to date
   return orders as Order[];
 }
