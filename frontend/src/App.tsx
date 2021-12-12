@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
+import HomePage from "./pages/HomePage";
 import OrderList from "./pages/OrderList";
 import ProductList from "./pages/ProductList";
 
@@ -34,6 +35,7 @@ export default function App() {
               <Routes>
                 <Route path="/orders" element={<OrderList />} />
                 <Route path="/products" element={<ProductList />} />
+                <Route path="/" element={<HomePage />} />
               </Routes>
             </Container>
             <Footer />
