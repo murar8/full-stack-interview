@@ -25,7 +25,7 @@ export function ProductCard({ code, description, imageURI, price }: Product) {
           )}
           <Stack spacing={1} sx={{ flexGrow: 1 }} alignItems="center">
             <Typography variant="h5">{description}</Typography>
-            <Typography variant="body1">{price}€</Typography>
+            <Typography variant="body1">{price.toFixed(2)}€</Typography>
             <Typography variant="body2" color="text.secondary">
               Code: {code}
             </Typography>
