@@ -19,7 +19,7 @@ export default function App() {
       <BrowserRouter>
         <Stack sx={{ height: "100vh" }}>
           <Header />
-          <Container maxWidth="md" sx={{ flexGrow: 1 }}>
+          <Container maxWidth="md" disableGutters sx={{ flexGrow: 1 }}>
             <Routes>
               <Route path="/orders" element={<OrderList />} />
               <Route path="/products" element={<ProductList />} />

@@ -10,7 +10,7 @@ export type Order = {
   id: number;
   created_at: Date;
   notes?: string;
-  products: number[];
+  products: { id: number; quantity: number }[];
 };
 
 export async function getProduct(id: number) {
@@ -28,5 +28,6 @@ export async function getProducts(offset: number, count: number) {
 export async function getAllOrders() {
   const result = await fetch("/api/allorders");
   const orders = await result.json();
+  // TODO! timestamp to date
   return orders as Order[];
 }

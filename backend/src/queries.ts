@@ -13,17 +13,24 @@ export type Order = {
   id: number;
   created_at: Date;
   notes?: string;
-  products: number[];
+  products: { id: number; quantity: number }[];
 };
 
 async function getProductsInsideOrder(id: number) {
   const [results] = await db
     .promise()
-    .query(`SELECT product_id FROM Orders_Products WHERE order_id = ${id};`);
+    .query(
+      `SELECT product_id, quantity FROM Orders_Products WHERE order_id = ${id};`
+    );
 
-  const ids = (results as RowDataPacket[]).map(({ product_id }) => product_id);
+  const products = (results as RowDataPacket[]).map(
+    ({ product_id, quantity }) => ({
+      id: product_id,
+      quantity,
+    })
+  );
 
-  return ids as number[];
+  return products as { id: number; quantity: number }[];
 }
 
 export async function getProduct(id: number) {
