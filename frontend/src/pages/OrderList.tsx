@@ -124,7 +124,7 @@ export default function OrderList() {
   }
 
   return (
-    <Stack spacing={2} p={2}>
+    <Stack spacing={1} p={2}>
       <Typography variant="h4" component="h2" textAlign="center">
         Orders
       </Typography>
