@@ -61,6 +61,11 @@ function OrderRow({ order }: OrderRowProps) {
     [order.createdAt]
   );
 
+  const totalProducts = useMemo(
+    () => order.products.map((p) => p.quantity).reduce((sum, q) => sum + q),
+    [order.products]
+  );
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -77,7 +82,7 @@ function OrderRow({ order }: OrderRowProps) {
         </TableCell>
         <TableCell>{order.id}</TableCell>
         <TableCell>{createdAt}</TableCell>
-        <TableCell>{order.products.length}</TableCell>
+        <TableCell>{totalProducts}</TableCell>
         <TableCell>{order.price}</TableCell>
         <TableCell>{order.notes || "-"}</TableCell>
       </TableRow>
