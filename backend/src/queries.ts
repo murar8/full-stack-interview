@@ -52,12 +52,19 @@ export async function getProduct(id: number) {
 }
 
 export async function getProducts(offset: number, count: number) {
-  const [results] = await db.promise().query(
+  const [products] = await db.promise().query(
     `SELECT id, code, description, price, image_uri AS imageURI\
      FROM Products ORDER BY id LIMIT ${count} OFFSET ${offset};`
   );
 
-  return results as Product[];
+  const [total] = await db
+    .promise()
+    .query("SELECT COUNT(*) AS count FROM Products");
+
+  return {
+    products: products as Product[],
+    totalCount: total[0].count as number,
+  };
 }
 
 export async function getAllOrders() {

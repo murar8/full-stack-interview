@@ -34,10 +34,12 @@ app.get(
   parseNumericQueryParam("count"),
   async (req, res, next) => {
     try {
-      const products = await getProducts(
+      const { products, totalCount } = await getProducts(
         req.numericQueryParams.offset,
         req.numericQueryParams.count
       );
+
+      res.set("X-Total-Count", totalCount.toString());
 
       res.status(200).json(products);
     } catch (error) {

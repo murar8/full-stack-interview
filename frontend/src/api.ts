@@ -21,9 +21,10 @@ export async function getProduct(id: number) {
 }
 
 export async function getProducts(offset: number, count: number) {
-  const result = await fetch(`/api/products?offset=${offset}&count=${count}`);
-  const products = await result.json();
-  return products as Product[];
+  const res = await fetch(`/api/products?offset=${offset}&count=${count}`);
+  const products = await res.json();
+  const totalCount = res.headers.get("X-Total-Count");
+  return { products: products as Product[], totalCount: parseInt(totalCount!) };
 }
 
 export async function getAllOrders() {
