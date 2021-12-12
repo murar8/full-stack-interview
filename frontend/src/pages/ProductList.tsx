@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Grid,
   LinearProgress,
   Paper,
@@ -18,10 +17,10 @@ export function ProductCard({ code, description, imageURI, price }: Product) {
       <Paper sx={{ p: 2 }}>
         <Stack direction="row" spacing={2} alignItems="stretch">
           {imageURI && (
-            <Avatar
+            <img
               src={imageURI}
-              variant="square"
-              sx={{ width: 96, height: 96 }}
+              alt={description}
+              style={{ width: 96, height: 96, objectFit: "contain" }}
             />
           )}
           <Stack spacing={1} sx={{ flexGrow: 1 }} alignItems="center">
@@ -109,6 +108,7 @@ export default function ProductList() {
           rowsPerPage={count}
           onPageChange={onPageChange}
           onRowsPerPageChange={onRowsPerPageChange}
+          labelRowsPerPage="Rows"
         />
       )}
     </Stack>
