@@ -39,9 +39,9 @@ export function ProductDetails({ id, quantity }: ProductDetailsProps) {
         </TableCell>
       ) : (
         <>
-          <TableCell>{data?.code}</TableCell>
-          <TableCell>{data?.description}</TableCell>
-          <TableCell>{data?.price.toFixed(2)}</TableCell>
+          <TableCell>{data!.code}</TableCell>
+          <TableCell>{data!.description}</TableCell>
+          <TableCell>{data!.price.toFixed(2)}€</TableCell>
           <TableCell>{quantity}</TableCell>
         </>
       )}
@@ -83,7 +83,7 @@ function OrderRow({ order }: OrderRowProps) {
         <TableCell>{order.id}</TableCell>
         <TableCell>{createdAt}</TableCell>
         <TableCell>{totalProducts}</TableCell>
-        <TableCell>{order.price}</TableCell>
+        <TableCell>{order.price.toFixed(2)}€</TableCell>
         <TableCell>{order.notes || "-"}</TableCell>
       </TableRow>
       <TableRow sx={{ borderTop: 0 }}>
