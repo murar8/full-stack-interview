@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Grid,
   LinearProgress,
   Paper,
@@ -17,7 +18,11 @@ export function ProductCard({ code, description, imageURI, price }: Product) {
       <Paper sx={{ p: 2 }}>
         <Stack direction="row" spacing={2} alignItems="stretch">
           {imageURI && (
-            <img src={imageURI} alt={description} width="96" height="96" />
+            <Avatar
+              src={imageURI}
+              variant="square"
+              sx={{ width: 96, height: 96 }}
+            />
           )}
           <Stack spacing={1} sx={{ flexGrow: 1 }} alignItems="center">
             <Typography variant="h5">{description}</Typography>
